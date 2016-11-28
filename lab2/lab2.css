@@ -1,0 +1,48 @@
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background: white;
+    overflow: auto;
+}
+
+.page-container {
+    width: 530px;
+    margin-left: calc((100% - 530px) / 2);
+    margin-left: -moz-calc((100% - 530px) / 2);
+    margin-left: -webkit-calc((100% - 530px) / 2);
+    margin-right: calc((100% - 530px) / 2);
+    margin-right: -moz-calc((100% - 530px) / 2);
+    margin-right: -webkit-calc((100% - 530px) / 2);
+    margin-top: 100px;
+    overflow: auto;
+}
+
+.page-container table {
+    width: 100%;
+}
+
+.page-container table td {
+    width: 100px;
+    height: 100px;
+    border: 3px solid black;
+    box-sizing: border-box;
+
+}
+
+.page-container table td.button-cell button {
+    height: 30px;
+    width: 50px;
+    font-weight: bold;
+}
+
+.page-container table td.button-cell {
+    padding: 35px 25px;
+    background: white;
+    border: none;
+}
+
+.page-container table td.button-cell.corner-cell {
+    background: #e7e2e3;
+}

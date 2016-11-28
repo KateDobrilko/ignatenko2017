@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width"/>
+  <title>Dobrilko. Lab 1. exercise 1.</title>
+  <link rel="stylesheet" href="lab2.css"/>
+</head>
+<body>
+<div class="page-container">
+  <table cellspacing="5" cellpadding="0">
+    <tbody>
+    <tr>
+      <td class="button-cell corner-cell">
+        <button onclick="cube.rotateUp()">↑</button>
+      </td>
+      <td class="button-cell">
+        <button onclick="cube.rotateColumn(1, true)">↑</button>
+      </td>
+      <td class="button-cell">
+        <button onclick="cube.rotateColumn(2, true)">↑</button>
+      </td>
+      <td class="button-cell">
+        <button onclick="cube.rotateColumn(3, true)">↑</button>
+      </td>
+      <td class="button-cell corner-cell">
+        <button onclick="cube.rotateRight()">→</button>
+      </td>
+    </tr>
+    <tr>
+      <td class="button-cell">
+        <button onclick="cube.rotateRow(1, false)">←</button>
+      </td>
+      <td id="cell11">
+      </td>
+      <td id="cell12">
+
+      </td>
+      <td id="cell13">
+
+      </td>
+      <td class="button-cell">
+        <button onclick="cube.rotateRow(1, true)">→</button>
+      </td>
+    </tr>
+    <tr>
+      <td class="button-cell">
+        <button onclick="cube.rotateRow(2, false)">←</button>
+      </td>
+      <td id="cell21">
+
+      </td>
+      <td id="cell22">
+
+      </td>
+      <td id="cell23">
+
+      </td>
+      <td class="button-cell">
+        <button onclick="cube.rotateRow(2, true)">→</button>
+      </td>
+    </tr>
+    <tr>
+      <td class="button-cell">
+        <button onclick="cube.rotateRow(3, false)">←</button>
+      </td>
+      <td id="cell31">
+      </td>
+      <td id="cell32">
+
+      </td>
+      <td id="cell33">
+
+      </td>
+      <td class="button-cell">
+        <button onclick="cube.rotateRow(3, true)">→</button>
+      </td>
+    </tr>
+    <tr>
+      <td class="button-cell corner-cell">
+        <button onclick="cube.rotateLeft()">←</button>
+      </td>
+      <td class="button-cell">
+        <button onclick="cube.rotateColumn(1, false)">↓</button>
+      </td>
+      <td class="button-cell">
+        <button onclick="cube.rotateColumn(2, false)">↓</button>
+      </td>
+      <td class="button-cell">
+        <button onclick="cube.rotateColumn(3, false)">↓</button>
+      </td>
+      <td class="button-cell corner-cell">
+        <button onclick="cube.rotateDown()">↓</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<script type="text/javascript" src="index.js"></script>
+<script type="text/javascript" src="constants.js"></script>
+<script type="text/javascript" src="entities.js"></script>
+<script type="text/javascript" src="eventHandlers.js"></script>
+</body>
+</html>
