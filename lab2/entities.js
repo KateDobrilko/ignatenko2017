@@ -76,7 +76,6 @@ lab2.entities = (function (constants) {
             this.horizontalPositionsArray[2]];
 
 
-
         this.commonPositionsArray = [
             this.horizontalPositionsArray[0],
             this.commonPositionsArray[1],
@@ -142,16 +141,77 @@ lab2.entities = (function (constants) {
     };
     //true - up, false - down
     Cube.prototype.rotateColumn = function (numberOfColumn, verticalDirection) {
+
+        var frontFaceColumn = [
+            this.cubeFaces[0].getArrayOfCells()[0][numberOfColumn - 1],
+            this.cubeFaces[0].getArrayOfCells()[1][numberOfColumn - 1],
+            this.cubeFaces[0].getArrayOfCells()[2][numberOfColumn - 1]
+        ];
+        var topFaceColumn = [
+            this.cubeFaces[3].getArrayOfCells()[0][numberOfColumn - 1],
+            this.cubeFaces[3].getArrayOfCells()[1][numberOfColumn - 1],
+            this.cubeFaces[3].getArrayOfCells()[2][numberOfColumn - 1]
+        ];
+        var backFaceColumn = [
+            this.cubeFaces[2].getArrayOfCells()[0][numberOfColumn - 1],
+            this.cubeFaces[2].getArrayOfCells()[1][numberOfColumn - 1],
+            this.cubeFaces[2].getArrayOfCells()[2][numberOfColumn - 1]
+        ];
+        var bottomFaceColumn = [
+            this.cubeFaces[1].getArrayOfCells()[0][numberOfColumn - 1],
+            this.cubeFaces[1].getArrayOfCells()[1][numberOfColumn - 1],
+            this.cubeFaces[1].getArrayOfCells()[2][numberOfColumn - 1]
+        ];
         if (verticalDirection) {
+            this.cubeFaces[0] = replaceColumnOnFace(this.cubeFaces[0], numberOfColumn, bottomFaceColumn);
+            this.cubeFaces[3] = replaceColumnOnFace(this.cubeFaces[3], numberOfColumn, frontFaceColumn);
+            this.cubeFaces[2] = replaceColumnOnFace(this.cubeFaces[2], numberOfColumn, topFaceColumn);
+            this.cubeFaces[1] = replaceColumnOnFace(this.cubeFaces[1], numberOfColumn, backFaceColumn);
 
         }
         else {
-
+            this.cubeFaces[0] = replaceColumnOnFace(this.cubeFaces[0], numberOfColumn, topFaceColumn);
+            this.cubeFaces[3] = replaceColumnOnFace(this.cubeFaces[3], numberOfColumn, backFaceColumn);
+            this.cubeFaces[2] = replaceColumnOnFace(this.cubeFaces[2], numberOfColumn, bottomFaceColumn);
+            this.cubeFaces[1] = replaceColumnOnFace(this.cubeFaces[1], numberOfColumn, frontFaceColumn);
         }
         this.renderCurrentFace();
     };
     //true - right, false - left
     Cube.prototype.rotateRow = function (numberOfRow, horizontalDirection) {
+        var frontFaceRow = [
+            this.cubeFaces[0].getArrayOfCells()[numberOfRow - 1][0],
+            this.cubeFaces[0].getArrayOfCells()[numberOfRow - 1][1],
+            this.cubeFaces[0].getArrayOfCells()[numberOfRow - 1][2]
+        ];
+        var rightFaceRow = [
+            this.cubeFaces[5].getArrayOfCells()[numberOfRow - 1][0],
+            this.cubeFaces[5].getArrayOfCells()[numberOfRow - 1][1],
+            this.cubeFaces[5].getArrayOfCells()[numberOfRow - 1][2]
+        ];
+        var backFaceRow = [
+            this.cubeFaces[2].getArrayOfCells()[numberOfRow - 1][0],
+            this.cubeFaces[2].getArrayOfCells()[numberOfRow - 1][1],
+            this.cubeFaces[2].getArrayOfCells()[numberOfRow - 1][2]
+        ];
+        var leftFaceRow = [
+            this.cubeFaces[4].getArrayOfCells()[numberOfRow - 1][0],
+            this.cubeFaces[4].getArrayOfCells()[numberOfRow - 1][1],
+            this.cubeFaces[4].getArrayOfCells()[numberOfRow - 1][2]
+        ];
+        if (horizontalDirection) {
+            this.cubeFaces[0].getArrayOfCells()[numberOfRow - 1] = leftFaceRow;
+            this.cubeFaces[5].getArrayOfCells()[numberOfRow - 1] = frontFaceRow;
+            this.cubeFaces[4].getArrayOfCells()[numberOfRow - 1] = backFaceRow;
+            this.cubeFaces[2].getArrayOfCells()[numberOfRow - 1] = rightFaceRow;
+        }
+        else {
+            this.cubeFaces[0].getArrayOfCells()[numberOfRow - 1] = rightFaceRow;
+            this.cubeFaces[5].getArrayOfCells()[numberOfRow - 1] = backFaceRow;
+            this.cubeFaces[4].getArrayOfCells()[numberOfRow - 1] = frontFaceRow;
+            this.cubeFaces[2].getArrayOfCells()[numberOfRow - 1] = leftFaceRow;
+
+        }
         this.renderCurrentFace();
     };
 
@@ -161,6 +221,13 @@ lab2.entities = (function (constants) {
         _renderCurrentFace(cellsArray);
     };
 
+
+    var replaceColumnOnFace = function (face, columnNumber, newColumn) {
+        for (var i = 0; i < 3; i++) {
+            face.getArrayOfCells()[i][columnNumber - 1] = newColumn[i];
+        }
+        return face;
+    };
 
     var findElementInArrayByValue = function (value, array) {
         var elementNumber = null;
@@ -184,7 +251,6 @@ lab2.entities = (function (constants) {
     };
 
     return {
-        CubeFace: CubeFace,
         Cube: Cube
     };
 })(lab2.constants);
